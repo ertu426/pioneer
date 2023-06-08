@@ -11,4 +11,9 @@ intro:
   hi: 你好，{name}
   aka: 也叫
   whats-your-name: 输入你的名字
+login:
+  title: 登录
+  username: 用户名
+  password: 密码
+  button: 登录
 not-found: 未找到页面

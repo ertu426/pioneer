@@ -13,6 +13,8 @@ import VueDevTools from 'vite-plugin-vue-devtools'
 import LinkAttributes from 'markdown-it-link-attributes'
 import Unocss from 'unocss/vite'
 import Shiki from 'markdown-it-shiki'
+import postcssNesting from 'postcss-nesting'
+import postcssPresetEnv from 'postcss-preset-env'
 
 // @ts-expect-error failed to resolve types
 import VueMacros from 'unplugin-vue-macros/vite'
@@ -37,6 +39,9 @@ export default defineConfig({
     // https://github.com/hannoeru/vite-plugin-pages
     Pages({
       extensions: ['vue', 'md'],
+      extendRoute(route) {
+        return route
+      },
     }),
 
     // https://github.com/JohnCampionJr/vite-plugin-vue-layouts
@@ -55,6 +60,7 @@ export default defineConfig({
       dirs: [
         'src/composables',
         'src/stores',
+        'src/utils',
       ],
       vueTemplate: true,
     }),
@@ -138,6 +144,15 @@ export default defineConfig({
     // https://github.com/webfansplz/vite-plugin-vue-devtools
     VueDevTools(),
   ],
+
+  css: {
+    postcss: {
+      plugins: [
+        postcssNesting(),
+        postcssPresetEnv(),
+      ],
+    },
+  },
 
   // https://github.com/vitest-dev/vitest
   test: {

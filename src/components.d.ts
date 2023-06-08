@@ -15,5 +15,7 @@ declare module '@vue/runtime-core' {
     TheCounter: typeof import('./components/TheCounter.vue')['default']
     TheFooter: typeof import('./components/TheFooter.vue')['default']
     TheInput: typeof import('./components/TheInput.vue')['default']
+    XButton: typeof import('./components/From/Button/XButton.vue')['default']
+    XInput: typeof import('./components/From/Input/XInput.vue')['default']
   }
 }
