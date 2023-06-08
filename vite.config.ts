@@ -39,6 +39,9 @@ export default defineConfig({
     // https://github.com/hannoeru/vite-plugin-pages
     Pages({
       extensions: ['vue', 'md'],
+      extendRoute(route) {
+        return route
+      },
     }),
 
     // https://github.com/JohnCampionJr/vite-plugin-vue-layouts
@@ -57,6 +60,7 @@ export default defineConfig({
       dirs: [
         'src/composables',
         'src/stores',
+        'src/utils',
       ],
       vueTemplate: true,
     }),
