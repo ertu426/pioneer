@@ -1,13 +1,21 @@
 <script setup lang="ts">
-const { t } = useI18n()
+import api from './api'
 
-const user = reactive({
+const { t } = useI18n()
+const user = useUserStore()
+const router = useRouter()
+
+const loginData = reactive({
   username: '',
   password: '',
 })
 
-function login() {
-  // TODO: login
+async function handleLogin() {
+  const { data } = await api.login(loginData)
+  const req = data.value
+  if (req.code === '200')
+    user.setNewToken(req.data.token)
+  router.push({ path: '/' })
 }
 </script>
 
@@ -15,13 +23,13 @@ function login() {
   <div class="login">
     <h1>{{ t("login.title") }}</h1>
     <div class="form">
-      <XInput id="username" v-model="user.username" type="text">
+      <XInput id="username" v-model="loginData.username" type="text">
         {{ t('login.username') }}
       </XInput>
-      <XInput id="password" v-model="user.password" type="password">
+      <XInput id="password" v-model="loginData.password" type="password">
         {{ t('login.password') }}
       </XInput>
-      <XButton test="msg" @click="login">
+      <XButton test="msg" @click="handleLogin">
         {{ t("login.button") }}
       </XButton>
     </div>
@@ -43,7 +51,7 @@ function login() {
 }
 </style>
 
-<route lang="yaml">
+<route lang="yaml" name="login">
 meta:
   layout: empty
 </route>
