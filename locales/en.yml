@@ -12,8 +12,14 @@ intro:
   aka: Also known as
   whats-your-name: What's your name?
 login:
-  title: 登录
-  username: 用户名
-  password: 密码
-  button: 登录
+  title: LOGIN
+  username: username
+  password: password
+  button: login
+register:
+  title: REGISTER
+  username: username
+  password: password
+  confirm_password: confirm password
+  button: register
 not-found: Not found
