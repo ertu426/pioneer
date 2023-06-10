@@ -29,7 +29,7 @@ div {
   }
 
   label {
-    @apply pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-1.5 leading-loose transition-all duration-200 ease-out motion-reduce:transition-none bg-transparent;
+    @apply pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-1.5 leading-loose transition-all duration-200 ease-out motion-reduce:transition-none bg-transparent uppercase;
   }
 }
 </style>

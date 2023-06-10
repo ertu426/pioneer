@@ -23,6 +23,5 @@ export const useMyFetch = createFetch({
   },
   fetchOptions: {
     mode: 'cors',
-    credentials: 'include', // 请求时携带 cookie 值
   },
 })

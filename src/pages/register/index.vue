@@ -1,17 +1,18 @@
-<script setup lang="ts" name="login">
+<script setup lang="ts" name="register">
 import api from './api'
 
 const { t } = useI18n()
 const user = useUserStore()
 const router = useRouter()
 
-const loginData = reactive({
+const registerData = reactive({
   username: '',
   password: '',
+  confirmPassword: '',
 })
 
-async function handleLogin() {
-  const { data } = await api.login(loginData)
+async function handleRegister() {
+  const { data } = await api.register(registerData)
   const req = data.value
   if (req.code === '200')
     user.setNewToken(req.data.token)
@@ -20,32 +21,35 @@ async function handleLogin() {
 </script>
 
 <template>
-  <div class="login">
-    <h1>{{ t("login.title") }}</h1>
+  <div class="register">
+    <h1>{{ t("register.title") }}</h1>
     <div class="form">
-      <XInput id="username" v-model="loginData.username" type="text">
-        {{ t('login.username') }}
+      <XInput id="username" v-model="registerData.username" type="text">
+        {{ t('register.username') }}
       </XInput>
-      <XInput id="password" v-model="loginData.password" type="password">
-        {{ t('login.password') }}
+      <XInput id="password" v-model="registerData.password" type="password">
+        {{ t('register.password') }}
+      </XInput>
+      <XInput id="confirmPassword" v-model="registerData.confirmPassword" type="password">
+        {{ t('register.confirm_password') }}
       </XInput>
       <div class="link">
-        <RouterLink to="/register">
-          {{ t('register.title') }}
+        <RouterLink to="/login">
+          {{ t('login.title') }}
         </RouterLink>
         <RouterLink to="/login">
-          {{ t('register.title') }}
+          {{ t('login.title') }}
         </RouterLink>
       </div>
-      <XButton test="msg" @click="handleLogin">
-        {{ t("login.button") }}
+      <XButton test="msg" @click="handleRegister">
+        {{ t("register.button") }}
       </XButton>
     </div>
   </div>
 </template>
 
 <style scoped lang="scss">
-.login {
+.register {
   @apply w-full md:w-9/12 lg:w-6/12 xl:w-3/12 min-h-auto flex flex-col justify-center items-center;
   user-select: none;
 
@@ -63,7 +67,7 @@ async function handleLogin() {
 }
 </style>
 
-<route lang="yaml" name="login">
+<route lang="yaml" name="register">
 meta:
   layout: empty
 </route>

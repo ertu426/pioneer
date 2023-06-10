@@ -16,4 +16,10 @@ login:
   username: 用户名
   password: 密码
   button: 登录
+register:
+  title: 注册
+  username: 用户名
+  password: 密码
+  confirm_password: 确认密码
+  button: 注册
 not-found: 未找到页面
